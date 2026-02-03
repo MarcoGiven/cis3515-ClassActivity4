@@ -26,8 +26,13 @@ class MainActivity : AppCompatActivity() {
         //spinner.onItemSelectedListener = object: ...
         spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                val selectedNum = numberArray[p2]
-                displayTextView.textSize = selectedNum.toFloat()
+                // PREVIOUS IMPLEMENTATION (Before gone over this parrt in class -> works fine)
+                // val selectedNum = numberArray[p2]
+                // displayTextView.textSize = selectedNum.toFloat()
+
+                p0?.run {
+                    displayTextView.textSize = getItemAtPosition(p2).toString().toFloat()
+                }
             }
 
             // Must include to fix error
